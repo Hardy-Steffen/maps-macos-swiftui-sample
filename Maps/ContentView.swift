@@ -2,21 +2,21 @@
 //  ContentView.swift
 //  Maps
 //
-//  Created by Jordan Singer on 7/13/20.
-//
+//  Originally created by Jordan Singer on 7/13/20.
+//  Forked and updated by Alexander Steffen in 2022. https://hardysteffen.com
 
 import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40.7128, longitude: -74.0060), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:  45.531508, longitude:  -73.586392), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
 
     var body: some View {
         NavigationView {
             Sidebar()
             Map(coordinateRegion: $region)
         }
-        .navigationTitle("New York, NY")
+        .navigationTitle("Montréal, QC")
         .toolbar {
             ToolbarItem(placement: .navigation) {
                 Button(action: { }) {
@@ -78,27 +78,18 @@ struct Sidebar: View {
                 .padding(.horizontal)
             
             List {
-                Text("Favorites")
+                Text("Google Maps")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.secondary)
                 VStack(alignment: .leading, spacing: 0) {
                     FavoriteView(title: "Home", subtitle: "Nearby", icon: "house.fill", color: .blue)
-                    FavoriteView(title: "Work", subtitle: "23 min drive", icon: "briefcase.fill", color: .orange)
-                    FavoriteView(title: "Coffee Co.", subtitle: "22 min drive", icon: "mappin", color: .red)
+              
+               
                 }
                 .padding(.bottom)
                 
-                Text("My Guides")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.secondary)
-                VStack(alignment: .leading, spacing: 0) {
-                    FavoriteView(title: "Beach Spots", subtitle: "9 places", icon: "mappin", color: .blue)
-                    FavoriteView(title: "Best Parks", subtitle: "3 places", icon: "mappin", color: .green)
-                    FavoriteView(title: "Hiking", subtitle: "8 places", icon: "map", color: .green)
-                    FavoriteView(title: "New York City", subtitle: "23 places", icon: "figure.wave", color: .yellow)
-                }
+
             }
         }
         .listStyle(SidebarListStyle())
